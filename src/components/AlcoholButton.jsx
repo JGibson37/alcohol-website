@@ -16,7 +16,6 @@ export default class AlcoholButton extends Component {
     axios
       .request(options)
       .then((response) => {
-        console.log(response.data);
         this.setState({ alcoholDetails: response.data.drinks[0] });
         console.log(this.state.alcoholDetails);
       })
@@ -34,12 +33,15 @@ export default class AlcoholButton extends Component {
             <div>Please click the button</div>
           ) : (
             <div key={this.state.alcoholDetails.idDrink}>
-              {Object.keys(this.state.alcoholDetails).map((key) => (
-                <div>
-                  Key: {key}, Value:
-                  {this.state.alcoholDetails[key]}
-                </div>
-              ))}
+              <div>{this.state.alcoholDetails.strDrink}</div>
+              <div>{this.state.alcoholDetails.strGlass}</div>
+              <div>{this.state.alcoholDetails.strIngredient1}</div>
+              <img
+                height="200px"
+                width="200px"
+                src={this.state.alcoholDetails.strDrinkThumb}
+                alt="Display"
+              />
             </div>
           )}
         </ul>

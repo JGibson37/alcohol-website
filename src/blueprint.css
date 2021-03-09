@@ -1,0 +1,31 @@
+.drink-containers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+}
+
+.drink-img {
+  display: flex;
+  justify-self: center;
+  height: 400px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+.name-image-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+.results-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
