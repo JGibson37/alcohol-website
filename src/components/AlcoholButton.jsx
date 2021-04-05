@@ -1,12 +1,17 @@
+import React, { useEffect } from "react";
 import axios from "axios";
-import React, { Component } from "react";
+import Iim from "./iim";
+import NameImage from "./nameImage";
 
-export default class AlcoholButton extends Component {
-  state = {
-    alcoholDetails: [],
+function AlcoholButton() {
+  const [alcohol, setAlcohol] = React.useState({});
+  const [state, updateState] = React.useState(false);
+
+  const handleClick = () => {
+    updateState(!state);
   };
 
-  fetchAlcohol = async () => {
+  useEffect(() => {
     const options = {
       method: "GET",
       url: "https://the-cocktail-db.p.rapidapi.com/random.php",
@@ -16,36 +21,34 @@ export default class AlcoholButton extends Component {
     axios
       .request(options)
       .then((response) => {
-        this.setState({ alcoholDetails: response.data.drinks[0] });
-        console.log(this.state.alcoholDetails);
+        console.log(response);
+        setAlcohol(response.data.drinks[0]);
       })
       .catch((error) => {
         console.error(error);
       });
-  };
+  }, [state]);
 
-  render() {
-    return (
-      <div>
-        <button onClick={this.fetchAlcohol}>Fetch Random Alcohol</button>
-        <ul>
-          {!this.state.alcoholDetails ? (
-            <div>Please click the button</div>
-          ) : (
-            <div key={this.state.alcoholDetails.idDrink}>
-              <div>{this.state.alcoholDetails.strDrink}</div>
-              <div>{this.state.alcoholDetails.strGlass}</div>
-              <div>{this.state.alcoholDetails.strIngredient1}</div>
-              <img
-                height="200px"
-                width="200px"
-                src={this.state.alcoholDetails.strDrinkThumb}
-                alt="Display"
-              />
-            </div>
-          )}
-        </ul>
-      </div>
-    );
-  }
+  return (
+    <body>
+      <h1 class="header">Alcohol Search</h1>
+      <container className="search-container">
+        <input />
+        <button>Search Button</button>
+        <button
+          className="random-alcohol-button"
+          type="button"
+          onClick={handleClick}
+        >
+          Random Alcohol Button
+        </button>
+      </container>
+      <container className="results-container">
+        <NameImage searchedDrink={alcohol} />
+        <Iim searchedDrink={alcohol} />
+      </container>
+    </body>
+  );
 }
+
+export default AlcoholButton;
