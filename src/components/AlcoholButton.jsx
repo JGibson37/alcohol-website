@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import Iim from "./iim";
-import NameImage from "./nameImage";
+import Iim from "./Iim";
+import NameImage from "./NameImage";
 
 function AlcoholButton() {
   const [alcohol, setAlcohol] = React.useState({});

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function iim(props) {
+export default function Iim(props) {
   const drink = props.searchedDrink;
   return (
     <container className="drink-containers">

@@ -1,6 +1,6 @@
 import React from "react";
 
-function nameImage(props) {
+function NameImage(props) {
   const drink = props.searchedDrink;
 
   return (
@@ -17,4 +17,4 @@ function nameImage(props) {
   );
 }
 
-export default nameImage;
+export default NameImage;
