@@ -1,11 +1,47 @@
 import React from "react";
-// import AlcoholButton from "./components/AlcoholButton";
-import TrueHeader from "./components/TrueHeader";
+import AlcoholButton from "./components/AlcoholButton";
+import IngredientSearch from "./components/IngredientSearch";
+
+const views = ["home", "random-drink", "ingredient-search"];
+
+const Home = () => {
+  return <div>home</div>;
+};
+
 function App() {
+  const [currentView, setCurrentView] = React.useState("home");
+
   return (
-    <div className="App">
-      <TrueHeader />
-      {/* <AlcoholButton /> */}
+    <div
+      className="grid w-screen h-screen"
+      style={{
+        gridTemplateColumns: "1fr 6fr",
+        gridTemplateAreas: `
+        "sidebar content"
+      `,
+      }}
+    >
+      <div
+        className="flex flex-col space-y-2 p-2"
+        style={{ gridArea: "sidebar" }}
+      >
+        {views.map((view) => (
+          <button
+            className="bg-gray-200"
+            onClick={() => {
+              setCurrentView(view);
+            }}
+          >
+            {view}
+          </button>
+        ))}
+      </div>
+
+      <div className="p-2" style={{ gridArea: "content" }}>
+        {currentView === "home" && <Home />}
+        {currentView === "random-drink" && <AlcoholButton />}
+        {currentView === "ingredient-search" && <IngredientSearch />}
+      </div>
     </div>
   );
 }

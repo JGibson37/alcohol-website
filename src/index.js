@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./blueprint.css";
-import "./trueHeader.css";
+// import "./blueprint.css";
+// import "./trueHeader.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 

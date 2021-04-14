@@ -1,15 +1,9 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import Iim from "./Iim";
-import NameImage from "./NameImage";
+import DrinkDetails from "./DrinkDetails";
 
 function AlcoholButton() {
   const [alcohol, setAlcohol] = React.useState({});
-  const [state, updateState] = React.useState(false);
-
-  const handleClick = () => {
-    updateState(!state);
-  };
 
   useEffect(() => {
     const options = {
@@ -27,27 +21,16 @@ function AlcoholButton() {
       .catch((error) => {
         console.error(error);
       });
-  }, [state]);
+  }, []);
 
   return (
-    <body>
-      <h1 class="header">Alcohol Search</h1>
-      <container className="search-container">
-        <input />
-        <button>Search Button</button>
-        <button
-          className="random-alcohol-button"
-          type="button"
-          onClick={handleClick}
-        >
-          Random Alcohol Button
-        </button>
-      </container>
-      <container className="results-container">
-        <NameImage searchedDrink={alcohol} />
-        <Iim searchedDrink={alcohol} />
-      </container>
-    </body>
+    <div className="space-y-4">
+      <h1 className="text-4xl font-semibold">Random Alcohol</h1>
+      <div className="flex space-x-4">
+        <img className="w-1/4" alt="" src={alcohol.strDrinkThumb} />
+        <DrinkDetails drink={alcohol} />
+      </div>
+    </div>
   );
 }
 
