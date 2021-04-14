@@ -4,7 +4,7 @@ import axios from "axios";
 function IngredientSearch() {
   const [ingredient, setIngredient] = React.useState("");
   const [ingredientToSearch, setIngredientToSearch] = React.useState("");
-  const [results, setResults] = React.useState({ ingredients: "" });
+  const [results, setResults] = React.useState({});
 
   const handleClick = () => {
     setIngredientToSearch(ingredient);
@@ -20,11 +20,11 @@ function IngredientSearch() {
 
     axios
       .request(options)
-      .then(function (response) {
+      .then((response) => {
         console.log(response.data);
         setResults(response.data.ingredients[0]);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.error(error);
       });
   }, [ingredientToSearch]);

@@ -1,8 +1,9 @@
 import React from "react";
 import AlcoholButton from "./components/AlcoholButton";
 import IngredientSearch from "./components/IngredientSearch";
+import CocktailSearch from "./components/CocktailSearch";
 
-const views = ["home", "random-drink", "ingredient-search"];
+const views = ["home", "random-drink", "ingredient-search", "cocktail-search"];
 
 const Home = () => {
   return <div>home</div>;
@@ -41,6 +42,7 @@ function App() {
         {currentView === "home" && <Home />}
         {currentView === "random-drink" && <AlcoholButton />}
         {currentView === "ingredient-search" && <IngredientSearch />}
+        {currentView === "cocktail-search" && <CocktailSearch />}
       </div>
     </div>
   );
